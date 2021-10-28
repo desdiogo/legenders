@@ -1,15 +1,25 @@
 <template>
-  <ui-button raised icon="favorite" :class="$theme.getThemeClass('secondary-bg')">Icon</ui-button>
+  <div class="q-pa-md">
+    <q-btn color="purple" @click="showNotif" label="Show Notification" />
+  </div>
 </template>
 
 <script>
-import {defineComponent, onMounted} from "vue";
+import {defineComponent} from "vue";
+import { useQuasar } from 'quasar'
 
+export default defineComponent({
+  setup () {
+    const $q = useQuasar()
 
-
-export default defineComponent({})
+    return {
+      showNotif () {
+        $q.notify({
+          type: 'positive',
+          message: 'test'
+        })
+      }
+    }
+  }
+})
 </script>
-
-<style scoped>
-
-</style>
