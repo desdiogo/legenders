@@ -7,4 +7,11 @@ Será criado um aplicativo para upload a download de legendas, similiar ao [Lege
 
 ### Andamento do Projeto
 - [Issues](https://github.com/desdiogo/legenders/issues)
-- [Projeto-Kanbam](https://github.com/desdiogo/legenders/projects/2)
+- [Projeto-Kanbam](https://github.com/desdiogo/legenders/projects/2
+
+### Páginas Concluídas
+- [Login](https://legendas.desdiogo.com/login)
+<p>
+    <img src="\\wsl$\Ubuntu\home\diogo\projetos\laravel\legenders\public\images\scan\page_login.png" width="700">
+</p>
+

@@ -1,9 +1,5 @@
 <template>
-  <Head>
-    <title>
-    Log in
-  </title>
-  </Head>
+  <Head title="Login" />
   <q-layout>
     <q-page-container>
       <q-page class="flex column justify-center items-center">
