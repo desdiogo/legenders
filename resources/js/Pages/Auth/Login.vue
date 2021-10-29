@@ -4,47 +4,49 @@
     Log in
   </title>
   </Head>
-  <section>
-    <div class="fixed-center">
-      <q-card class="q-pa-lg my-card" style="width: 400px;">
-        <div class="q-pb-lg row justify-center">
-          <q-img
-            height="150px"
-            width="150px"
-            img-class="logo"
-            src="images/logo.jpg"
-          />
-        </div>
-        <q-form
-          @submit.prevent="onSubmit"
-          class="q-gutter-md"
-        >
-          <q-input
-            outlined
-            v-model="form.email"
-            label="E-mail"
-            lazy-rules
-            :rules="rules.email"
-          />
-
-          <q-input
-            outlined
-            type="password"
-            v-model="form.password"
-            label="Senha"
-            lazy-rules
-            :rules="rules.password"
-          />
-
-          <q-toggle v-model="form.remember" label="Lembrar-me"/>
-
-          <div class="row justify-end">
-            <q-btn label="Login" type="submit" color="accent" no-caps/>
+  <q-layout>
+    <q-page-container>
+      <q-page class="q-pa-md flex column justify-center items-center">
+        <q-card class="q-pa-lg my-card" style="width: 400px;">
+          <div class="q-pb-lg row justify-center">
+            <q-img
+              height="150px"
+              width="150px"
+              img-class="logo"
+              src="images/logo.jpg"
+            />
           </div>
-        </q-form>
-      </q-card>
-    </div>
-  </section>
+          <q-form
+            @submit.prevent="onSubmit"
+            class="q-gutter-md"
+          >
+            <q-input
+              outlined
+              v-model="form.email"
+              label="E-mail"
+              lazy-rules
+              :rules="rules.email"
+            />
+
+            <q-input
+              outlined
+              type="password"
+              v-model="form.password"
+              label="Senha"
+              lazy-rules
+              :rules="rules.password"
+            />
+
+            <q-toggle v-model="form.remember" label="Lembrar-me"/>
+
+            <div class="row justify-end">
+              <q-btn label="Login" type="submit" color="accent" no-caps/>
+            </div>
+          </q-form>
+        </q-card>
+      </q-page>
+    </q-page-container>
+  </q-layout>
 </template>
 
 <script>
@@ -95,9 +97,7 @@ export default defineComponent({
 </script>
 
 <style lang="sass" scoped>
-section
-  width: 100%
-  height: 100vh
+.q-page
   background: #CC95C0
   background: -webkit-linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0)
   background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0)
