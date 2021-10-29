@@ -6,7 +6,7 @@
   </Head>
   <section>
     <div class="fixed-center">
-      <q-card class="q-pa-lg my-card" style="width: 425px">
+      <q-card class="q-pa-lg my-card" style="width: 400px;">
         <div class="q-pb-lg row justify-center">
           <q-img
             height="150px"
