@@ -6,7 +6,7 @@
   </Head>
   <q-layout>
     <q-page-container>
-      <q-page class="q-pa-md flex column justify-center items-center">
+      <q-page class="flex column justify-center items-center">
         <q-card class="q-pa-lg my-card" style="width: 400px;">
           <div class="q-pb-lg row justify-center">
             <q-img
