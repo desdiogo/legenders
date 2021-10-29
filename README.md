@@ -12,6 +12,6 @@ Será criado um aplicativo para upload a download de legendas, similiar ao [Lege
 ### Páginas Concluídas
 - [Login](https://legendas.desdiogo.com/login)
 <p>
-    <img src="\\wsl$\Ubuntu\home\diogo\projetos\laravel\legenders\public\images\scan\page_login.png" width="700">
+    <img src="https://legendas.desdiogo.com/images/scan/page_login.png" width="700" alt="Página Login">
 </p>
 
