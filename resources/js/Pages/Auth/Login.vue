@@ -1,98 +1,113 @@
 <template>
-    <Head title="Log in" />
-
-    <jet-authentication-card>
-        <template #logo>
-            <jet-authentication-card-logo />
-        </template>
-
-        <jet-validation-errors class="mb-4" />
-
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
-            {{ status }}
+  <Head>
+    <title>
+    Log in
+  </title>
+  </Head>
+  <section>
+    <div class="fixed-center">
+      <q-card class="q-pa-lg my-card" style="width: 425px">
+        <div class="q-pb-lg row justify-center">
+          <q-img
+            height="150px"
+            width="150px"
+            img-class="logo"
+            src="images/logo.jpg"
+          />
         </div>
+        <q-form
+          @submit.prevent="onSubmit"
+          class="q-gutter-md"
+        >
+          <q-input
+            outlined
+            v-model="form.email"
+            label="E-mail"
+            lazy-rules
+            :rules="rules.email"
+          />
 
-        <form @submit.prevent="submit">
-            <div>
-                <jet-label for="email" value="Email" />
-                <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus />
-            </div>
+          <q-input
+            outlined
+            type="password"
+            v-model="form.password"
+            label="Senha"
+            lazy-rules
+            :rules="rules.password"
+          />
 
-            <div class="mt-4">
-                <jet-label for="password" value="Password" />
-                <jet-input id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="current-password" />
-            </div>
+          <q-toggle v-model="form.remember" label="Lembrar-me"/>
 
-            <div class="block mt-4">
-                <label class="flex items-center">
-                    <jet-checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ml-2 text-sm text-gray-600">Remember me</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    Forgot your password?
-                </Link>
-
-                <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Log in
-                </jet-button>
-            </div>
-        </form>
-    </jet-authentication-card>
+          <div class="row justify-end">
+            <q-btn label="Login" type="submit" color="accent" no-caps/>
+          </div>
+        </q-form>
+      </q-card>
+    </div>
+  </section>
 </template>
 
 <script>
-    import { defineComponent } from 'vue'
-    import JetAuthenticationCard from '@/Jetstream/AuthenticationCard.vue'
-    import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue'
-    import JetButton from '@/Jetstream/Button.vue'
-    import JetInput from '@/Jetstream/Input.vue'
-    import JetCheckbox from '@/Jetstream/Checkbox.vue'
-    import JetLabel from '@/Jetstream/Label.vue'
-    import JetValidationErrors from '@/Jetstream/ValidationErrors.vue'
-    import { Head, Link } from '@inertiajs/inertia-vue3';
+import { defineComponent, ref } from 'vue';
+import { useForm, Head } from '@inertiajs/inertia-vue3'
+import { notify } from "../../services/notify";
 
-    export default defineComponent({
-        components: {
-            Head,
-            JetAuthenticationCard,
-            JetAuthenticationCardLogo,
-            JetButton,
-            JetInput,
-            JetCheckbox,
-            JetLabel,
-            JetValidationErrors,
-            Link,
-        },
+export default defineComponent({
+  components: {
+    Head
+  },
 
-        props: {
-            canResetPassword: Boolean,
-            status: String
-        },
-
-        data() {
-            return {
-                form: this.$inertia.form({
-                    email: '',
-                    password: '',
-                    remember: false
-                })
-            }
-        },
-
-        methods: {
-            submit() {
-                this.form
-                    .transform(data => ({
-                        ... data,
-                        remember: this.form.remember ? 'on' : ''
-                    }))
-                    .post(this.route('login'), {
-                        onFinish: () => this.form.reset('password'),
-                    })
-            }
-        }
+  setup() {
+    const form = useForm({
+      email: null,
+      password: null,
+      remember: false,
     })
+
+    const rules = ref({
+      email: [
+        val => val && val.length > 0 || 'E-mail é obrigatório',
+        val => /.+@.+\..+/.test(val) || 'E-mail inválido',
+      ],
+      password: [
+        val => val && val.length > 0 || 'Senha é obrigatória',
+      ]
+    })
+
+    function onSubmit() {
+      form
+        .transform((data) => ({
+          ...data,
+          remember: data.remember ? 'on' : '',
+        }))
+        .post(route('login'), {
+          onError: (error) => notify.error(error.email)
+        })
+    }
+
+    return {
+      form,
+      rules,
+      onSubmit
+    }
+  },
+})
 </script>
+
+<style lang="sass" scoped>
+section
+  width: 100%
+  height: 100vh
+  background: #CC95C0
+  background: -webkit-linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0)
+  background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0)
+
+  .my-card
+    background: #ECE9E6
+    background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6)
+    background: linear-gradient(to right, #FFFFFF, #ECE9E6)
+
+
+  :deep(.logo)
+    border-radius: 50%
+</style>
