@@ -7,7 +7,7 @@
   <q-layout>
     <q-page-container>
       <q-page class="flex column justify-center items-center">
-        <q-card class="q-pa-lg my-card" style="width: 400px;">
+        <q-card class="q-pa-lg my-card" style="width: 380px;">
           <div class="q-pb-lg row justify-center">
             <q-img
               height="150px"
@@ -97,17 +97,12 @@ export default defineComponent({
 </script>
 
 <style lang="sass" scoped>
-.q-page
-  background: #CC95C0
-  background: -webkit-linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0)
-  background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0)
-
-  .my-card
-    background: #ECE9E6
-    background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6)
-    background: linear-gradient(to right, #FFFFFF, #ECE9E6)
+.my-card
+  background: #ECE9E6
+  background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6)
+  background: linear-gradient(to right, #FFFFFF, #ECE9E6)
 
 
-  :deep(.logo)
-    border-radius: 50%
+:deep(.logo)
+  border-radius: 50%
 </style>

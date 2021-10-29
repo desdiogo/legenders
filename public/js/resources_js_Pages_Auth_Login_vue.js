@@ -134,7 +134,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_q_card, {
                 "class": "q-pa-lg my-card",
                 style: {
-                  "width": "400px"
+                  "width": "380px"
                 }
               }, {
                 "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -282,7 +282,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".q-page[data-v-a2ac2cea] {\n  background: #CC95C0;\n  background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);\n}\n.q-page .my-card[data-v-a2ac2cea] {\n  background: #ECE9E6;\n  background: linear-gradient(to right, #FFFFFF, #ECE9E6);\n}\n.q-page[data-v-a2ac2cea] .logo {\n  border-radius: 50%;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".my-card[data-v-a2ac2cea] {\n  background: #ECE9E6;\n  background: linear-gradient(to right, #FFFFFF, #ECE9E6);\n}\n[data-v-a2ac2cea] .logo {\n  border-radius: 50%;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
